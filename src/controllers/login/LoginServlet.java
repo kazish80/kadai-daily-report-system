@@ -1,6 +1,7 @@
 package controllers.login;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -34,6 +35,8 @@ public class LoginServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("** " + LocalDateTime.now() + " Debug: LoginServlet : doGet");
+
         request.setAttribute("_token", request.getSession().getId());
         request.setAttribute("hasError", false);
         if(request.getSession().getAttribute("flush") != null) {
@@ -49,6 +52,8 @@ public class LoginServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("** " + LocalDateTime.now() + " Debug: LoginServlet : doPost");
+
         // 認証結果を格納する変数
         Boolean check_result = false;
 
